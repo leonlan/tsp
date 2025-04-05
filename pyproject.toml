@@ -1,32 +1,43 @@
-[tool.poetry]
-name = "tsp"
+[project]
+name = "breinstein"
 version = "0.1.0"
-description = "Solving the traveling salesman problem."
-authors = ["Leon Lan <leon.lanyidong@gmail.com>"]
+description = "Breinstein optimization."
+authors = [
+    { name = "Leon Lan", email = "leon.lanyidong@gmail.com"},
+]
+license = { text = "GPL-3 License" }
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "pyvrp==0.10.1",
+    "streamlit>=1.44.1",
+]
 
 
-[tool.poetry.dependencies]
-python = ">=3.9,<3.11"
-numpy = "^1.23.3"
-alns = "5.0.4"
-tqdm = "^4.64.1"
-elkai = "^0.1.2"
-gurobipy = "^9"
+[dependency-groups]
+dev = [
+    "pre-commit>=3.8.0",
+    "jupyter>=1.0.0",
+]
 
 
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-isort = "^5.10.1"
-black = "^22.8.0"
-pre-commit = "^2.20.0"
+[tool.uv]
+default-groups = ["dev"]
 
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.mypy]
+ignore_missing_imports = true
+
+
+[tool.black]
+line-length = 79
 
 
 [tool.ruff]
+line-length = 79
+extend-include = ["*.ipynb"]
+
+
+[tool.ruff.lint]
 select = [
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
@@ -36,11 +47,15 @@ select = [
     "B",  # flake8-bugbear
 ]
 ignore = [
-    "E501",  # line too long, handled by black
+    "E741",  # ambiguous variable name, needed for indexing
     "C901",  # too complex
 ]
 
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["F401"]
-"benchmark.py" = ["E402", "E741", "B905"]
-"diagnostics.py" = ["E741", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"] # ignore unused module imports
+
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
