@@ -9,3 +9,8 @@
   
 - VRP notebook
   - https://githubtocolab.com/leonlan/tsp/blob/main/vrp.ipynb
+
+
+## Installation
+- Install [here](https://docs.astral.sh/uv/getting-started/installation/)
+- Then run `uv run streamlit run Home.py`
