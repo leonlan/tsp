@@ -14,3 +14,10 @@
 ## Installation
 - Install [here](https://docs.astral.sh/uv/getting-started/installation/)
 - Then run `uv run streamlit run Home.py`
+
+
+``` python
+vehicles_df = pd.read_csv("https://raw.githubusercontent.com/leonlan/tsp/refs/heads/main/data/vehicles.csv")
+depots_df = pd.read_csv("https://raw.githubusercontent.com/leonlan/tsp/refs/heads/main/data/depots.csv")
+clients_df = pd.read_csv("https://raw.githubusercontent.com/leonlan/tsp/refs/heads/main/data/clients.csv")
+```
